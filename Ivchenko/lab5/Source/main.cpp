@@ -165,20 +165,38 @@ void printAndDestroy(node* &b, std::ofstream & fout)
 	}
 		
 }
+<<<<<<< HEAD
 int check(std::stringstream &ss, std::string s){ 
 	char check;
 	while (ss >> check){
 			if ((check != ' ') && (!isdigit(check)))
 					return 0;
 	}
+=======
+int check(std::stringstream &ss, std::string s, std::ofstream &fout){ 
+	char check;
+	while (ss >> check){
+			if ((check != ' ') && (!isdigit(check))){
+					fout << "Некорректные данные:" << s << endl;
+					return 0;
+			}
+	}
+	ss.clear();
+	ss << s;
+>>>>>>> ea9f68201b59a7616aada72801ce972d687b002b
 	return 1;
 }
 		
 void readFromFile(std::ifstream &file){
 		
+<<<<<<< HEAD
 
 		std::stringstream ss;
 		std::stringstream checks;
+=======
+		int cur;
+		std::stringstream ss;
+>>>>>>> ea9f68201b59a7616aada72801ce972d687b002b
 		vector<int> arr;	
 		if(!file.is_open()){
   	  		std::cout<<"Неверный путь к файлу\n";
@@ -192,6 +210,7 @@ void readFromFile(std::ifstream &file){
 		std::string s;
 		while (std::getline(file,s)){
 
+<<<<<<< HEAD
 			ss << s;
 			checks << s;
 			if(check(checks, s)){
@@ -199,6 +218,12 @@ void readFromFile(std::ifstream &file){
 				
 
 				int cur;
+=======
+				ss << s;
+				if(!check(ss, s, fout)) {ss.clear(); continue;}
+						
+
+>>>>>>> ea9f68201b59a7616aada72801ce972d687b002b
 				while (ss >> cur)
 					arr.push_back(cur);
 					
@@ -210,22 +235,34 @@ void readFromFile(std::ifstream &file){
 					MyBinTree = insert(MyBinTree, i);
 				}	
 				
+<<<<<<< HEAD
 				fout << "Изображение бинарного дерева поиска из заданного набора элементов:" << s << endl;
+=======
+				fout << "Изображение бинарного дерева поиска из набора элементов:" << s << endl;
+>>>>>>> ea9f68201b59a7616aada72801ce972d687b002b
 				
 				displayBT (MyBinTree,1, fout);
 
 				fout << "\nПеречисление элементов в порядке возрастания:";
 
 
+<<<<<<< HEAD
+=======
+				ss.clear();
+>>>>>>> ea9f68201b59a7616aada72801ce972d687b002b
 				arr.clear();
 				s.clear();
 				printAndDestroy(MyBinTree, fout);
 				fout << "\n\n\n";
+<<<<<<< HEAD
 			}else fout << "Некорректные данные:" << s << endl;
 			ss.clear();
 			checks.clear();
 		}file.close();
 		fout.close();
+=======
+		}
+>>>>>>> ea9f68201b59a7616aada72801ce972d687b002b
 			
 		
 }
